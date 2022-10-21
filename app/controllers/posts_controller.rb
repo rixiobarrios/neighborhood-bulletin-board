@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
 
   def index
-    # force a ruby console to appear under this context
-    # byebug
     matching_posts = Post.all
     @posts = matching_posts.order(:created_at)
 
@@ -32,4 +30,19 @@ class PostsController < ApplicationController
 
     redirect_to("/posts")
   end
+  def update
+    the_id = params.fetch("post_id")
+    matching_posts = Post.where({ :id => the_id })
+    the_post = matching_posts.at(0)
+
+    input_title = params.fetch("query_title")
+    input_body = params.fetch("query_body")
+
+    the_post.title = input_title
+    the_post.body = input_body
+
+    the_post.save
+
+    redirect_to("/posts/#{the_post.id.to_s}")
+  end 
 end  
