@@ -1,0 +1,44 @@
+<h1>Neighborhood Bulletin Board</h1>
+
+<form action="/insert_new_post">
+  <label for="browser_title">Title</label>
+  <input id="browser_title" type="text" name="query_title" placeholder="Enter a title...">
+
+  <label for="browser_body">Body</label>
+  <input id="browser_body" type="text" name="query_body" placeholder="Enter a body...">
+
+  <button>Add post</button>
+</form>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th></th>
+  </tr>
+
+  <% @posts.each do |post| %>
+  <tr>
+    <td>
+      <%= post.id %>
+    </td>
+
+    <td>
+      <%= post.title %>
+    </td>
+
+    <td>
+      <a href="/posts/<%= post.id %>">Show details</a>
+    </td>
+  </tr>
+  
+  <% end %>
+</table>

@@ -1,0 +1,77 @@
+<h1>Post Details</h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd><%= @post.id %></dd>
+
+  <dt>Title</dt>
+  <dd><%= @post.title %></dd>
+
+  <dt>Body</dt>
+  <dd><%= @post.body %></dd>
+
+   <dt>Posted</dt>
+  <dd><%= @post.created_at %></dd>
+
+   <dt>Updated</dt>
+  <dd><%= @post.updated_at %></dd>
+
+  <dt>Edit post</dt>
+  <dd>
+    <form action="/update_post/<%= @post.id %>" >
+      <label for="browser_title">Title</label>
+      <input id="browser_title" type="text" name="query_title" placeholder="Enter a title..." value="<%= @post.title %>">
+
+      <label for="browser_body">Body</label>
+      <input id="browser_body" type="text" name="query_body" placeholder="Enter a body..." value="<%= @post.body %>">
+
+      <button>Update post</button>
+    </form>
+  </dd>
+</dl>
+
+<!--<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Address
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Neighborhood
+    </th>
+
+    <th></th>
+  </tr>
+
+  <%# @user.commented_venues.each do |venue| %>
+  <tr>
+    <td>
+      <%#= venue.id %>
+    </td>
+    <td>
+      <%#= venue.address %>
+    </td>
+   
+    <td>
+      <%#= venue.name %>
+    </td>
+   
+    <td>
+      <%#= venue.neighborhood %>
+    </td>
+
+    <td>
+      <a href="/venues/<%= %>">Show details</a>
+    </td>
+  </tr>
+  
+  <%# end %>
+</table>-->
