@@ -16,12 +16,20 @@ class PostsController < ApplicationController
     render({ :template => "post_templates/show.html.erb"})
   end
   def create
-    insert_new_post = params.fetch("query_title")
+    add_post = params.fetch("query_title")
     a_new_post = Post.new
     a_new_post.title = params.fetch("query_title")
     a_new_post.body = params.fetch("query_body")
     a_new_post.save
 
     redirect_to("/posts/#{a_new_post.id}")
+  end
+  def destroy
+    the_id = params.fetch("post_id")
+    matching_posts = Post.where({ :id => the_id })
+    the_post = matching_posts.at(0)
+    the_post.destroy
+
+    redirect_to("/posts")
   end
 end  

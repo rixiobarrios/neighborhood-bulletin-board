@@ -30,48 +30,10 @@
   </dd>
 </dl>
 
-<!--<table border="1">
-  <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      Address
-    </th>
-
-    <th>
-      Name
-    </th>
-
-    <th>
-      Neighborhood
-    </th>
-
-    <th></th>
-  </tr>
-
-  <%# @user.commented_venues.each do |venue| %>
-  <tr>
-    <td>
-      <%#= venue.id %>
-    </td>
-    <td>
-      <%#= venue.address %>
-    </td>
-   
-    <td>
-      <%#= venue.name %>
-    </td>
-   
-    <td>
-      <%#= venue.neighborhood %>
-    </td>
-
-    <td>
-      <a href="/venues/<%= %>">Show details</a>
-    </td>
-  </tr>
-  
-  <%# end %>
-</table>-->
+  <dt>Delete post</dt>
+  <dd>
+    <a href="/delete_post/<%= @post.id %>">
+      Delete this venue
+    </a>
+  </dd>
+</dl>
