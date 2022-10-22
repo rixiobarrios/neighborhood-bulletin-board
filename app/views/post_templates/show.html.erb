@@ -1,5 +1,5 @@
 <h1>Post Details</h1>
-
+<hr>
 <dl>
   <dt>ID</dt>
   <dd><%= @post.id %></dd>
@@ -11,25 +11,25 @@
   <dd><%= @post.body %></dd>
 
    <dt>Posted</dt>
-  <dd><%= @post.created_at %></dd>
+  <dd><%= time_ago_in_words(@post.created_at) %> ago</dd>
 
    <dt>Updated</dt>
-  <dd><%= @post.updated_at %></dd>
-
+  <dd><%= time_ago_in_words(@post.updated_at) %> ago</dd>
+  <hr>
   <dt>Edit post</dt>
   <dd>
     <form action="/update_post/<%= @post.id %>" >
-      <label for="browser_title">Title</label>
-      <input id="browser_title" type="text" name="query_title" placeholder="Enter a title..." value="<%= @post.title %>">
+      <label for="post_title">Title</label>
+      <input id="post_title" type="text" name="query_title" placeholder="Enter a title..." value="<%= @post.title %>">
 
-      <label for="browser_body">Body</label>
-      <input id="browser_body" type="text" name="query_body" placeholder="Enter a body..." value="<%= @post.body %>">
+      <label for="post_body">Body</label>
+      <input id="post_body" type="text" name="query_body" placeholder="Enter a body..." value="<%= @post.body %>">
 
       <button>Update post</button>
     </form>
   </dd>
 </dl>
-
+<hr>
   <dt>Delete post</dt>
   <dd>
     <a href="/delete_post/<%= @post.id %>">
@@ -37,3 +37,50 @@
     </a>
   </dd>
 </dl>
+<hr>
+
+<h2>Comments</h2>
+
+<table>
+  <tr>
+    <th>Post ID</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </tr>
+  <% @post.comments.each do |comment| %>
+  <tr>
+  <td>
+  <!-- store the search for comment in the variable comment -->
+  <!-- in the search use the ralationship of comment.author_id as a reference for username -->
+  <!-- grab the first and only result from that search using at.(0) -->
+    <%# post = Post.where({ :id => comment.id }).at(0) %>
+    <%= @post.id %>
+  </td>
+    <td>
+      <%= comment.body %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(comment.created_at) %> ago
+    </td>
+  </tr>
+  
+  <% end %>
+</table>
+
+<hr>
+
+<h3>Add a new comment</h3>
+
+<form action="/add_comment">
+  <label for="post_id">Post ID</label>
+  <input id="post_id" type="text" value="<%= @post.id %>" name="query_id">
+
+  <label for="add_comment">Comment</label>
+  <textarea id="add_comment" name="query_body" placeholder="Enter a comment..."></textarea>
+
+  <button>Add comment</button>
+</form>
+
+
+<hr>
