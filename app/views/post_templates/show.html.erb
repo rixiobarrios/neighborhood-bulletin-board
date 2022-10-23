@@ -16,20 +16,17 @@
    <dt>Updated</dt>
   <dd><%= time_ago_in_words(@post.updated_at) %> ago</dd>
   <hr>
+<dl>
   <dt>Edit post</dt>
   <dd>
-    <form action="/update_post/<%= @post.id %>" >
-      <label for="post_title">Title</label>
-      <input id="post_title" type="text" name="query_title" placeholder="Enter a title..." value="<%= @post.title %>">
-
-      <label for="post_body">Body</label>
-      <input id="post_body" type="text" name="query_body" placeholder="Enter a body..." value="<%= @post.body %>">
-
-      <button>Update post</button>
-    </form>
+    <a href="/edit/<%= @post.id %>">
+      Edit this post
+    </a>
   </dd>
 </dl>
+</dl>
 <hr>
+<dl>
   <dt>Delete post</dt>
   <dd>
     <a href="/delete_post/<%= @post.id %>">

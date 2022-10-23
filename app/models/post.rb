@@ -9,8 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Post < ApplicationRecord
-  # validates(:title, { :presence => true })
-  # validates(:body, { :presence => true })
   def comments
     my_id = self.id
     matching_comment = Comment.where({ :post_id => my_id })

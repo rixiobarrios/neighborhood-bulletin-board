@@ -1,0 +1,17 @@
+  <hr>
+  <dt>Edit post</dt>
+  <dd>
+    <form action="/update_post/<%= @post.id %>" >
+      <label for="post_id">ID</label>
+      <input id="post_id" type="text" name="query_id" placeholder="Enter a title..." value="<%= @post.id %>">
+
+      <label for="post_title">Title</label>
+      <input id="post_title" type="text" name="query_title" placeholder="Enter a title..." value="<%= @post.title %>">
+
+      <label for="post_body">Body</label>
+      <input id="post_body" type="text" name="query_body" placeholder="Enter a body..." value="<%= @post.body %>">
+
+      <button>Edit post</button>
+    </form>
+  </dd>
+  <hr>

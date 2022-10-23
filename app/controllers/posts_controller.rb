@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+  # validates(:title, { presence => true, allow_blank => false })
+  # validates(:body, { presence => true, allow_blank => false })
+  # validates :title, presence: true, allow_blank: false
+  # validates :body, presence: true, allow_blank: false
+
   def index
     matching_posts = Post.all
     @posts = matching_posts.order(created_at: :desc)
@@ -12,6 +17,14 @@ class PostsController < ApplicationController
     @post = matching_posts.at(0)
 
     render({ :template => "post_templates/show.html.erb" })
+  end
+
+  def edit
+    post_id = params.fetch("post_id")
+    matching_posts = Post.where({ :id => post_id })
+    @post = matching_posts.at(0)
+
+    render({ :template => "post_templates/edit.html.erb" })
   end
 
   def create
