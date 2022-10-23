@@ -13,9 +13,7 @@ class Post < ApplicationRecord
   # validates(:body, { :presence => true })
   def comments
     my_id = self.id
-
-    matching_comment = Comment.where({ :id => my_id })
-
+    matching_comment = Comment.where({ :post_id => my_id })
     return matching_comment
   end  
 end
