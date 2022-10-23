@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     matching_posts = Post.all
-    @posts = matching_posts.order(created_at: :asc)
+    @posts = matching_posts.order(created_at: :desc)
 
     render({ :template => "post_templates/index.html.erb" })
   end

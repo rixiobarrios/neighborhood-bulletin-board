@@ -33,7 +33,7 @@
   <dt>Delete post</dt>
   <dd>
     <a href="/delete_post/<%= @post.id %>">
-      Delete this venue
+      Delete this post
     </a>
   </dd>
 </dl>
@@ -43,28 +43,27 @@
 
 <table>
   <tr>
-    <th>Post ID</th>
+    <th>Comment ID</th>
     <th>Comment</th>
     <th>Posted</th>
   </tr>
   <% @post.comments.each do |comment| %>
   <tr>
-  <td>
-  <!-- store the search for comment in the variable comment -->
-  <!-- in the search use the ralationship of comment.author_id as a reference for username -->
-  <!-- grab the first and only result from that search using at.(0) -->
-    <%# post = Post.where({ :id => comment.id }).at(0) %>
-    <%= @post.id %>
-  </td>
+    <td>
+      <%= comment.id %>
+    </td>
     <td>
       <%= comment.body %>
     </td>
-
     <td>
       <%= time_ago_in_words(comment.created_at) %> ago
     </td>
+    <td>
+      <a href="/delete_comment/<%= comment.id %>">
+        Delete this comment
+      </a>
+    </td>
   </tr>
-  
   <% end %>
 </table>
 
@@ -81,6 +80,4 @@
 
   <button>Add comment</button>
 </form>
-
-
 <hr>

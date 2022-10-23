@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get("/update_post/:post_id", { :controller => "posts", :action => "update"})
 
   get("/add_comment", { :controller => "comments", :action => "create" })
+  get("/delete_comment/:comment_id", { :controller => "comments", :action => "destroy" })
 end

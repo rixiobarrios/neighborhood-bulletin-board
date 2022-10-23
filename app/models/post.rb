@@ -14,6 +14,6 @@ class Post < ApplicationRecord
   def comments
     my_id = self.id
     matching_comment = Comment.where({ :post_id => my_id })
-    return matching_comment
+    return matching_comment.order(created_at: :desc)
   end  
 end
