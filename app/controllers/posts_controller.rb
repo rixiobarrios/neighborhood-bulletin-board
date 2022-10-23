@@ -1,9 +1,4 @@
 class PostsController < ApplicationController
-  # validates(:title, { presence => true, allow_blank => false })
-  # validates(:body, { presence => true, allow_blank => false })
-  # validates :title, presence: true, allow_blank: false
-  # validates :body, presence: true, allow_blank: false
-
   def index
     matching_posts = Post.all
     @posts = matching_posts.order(created_at: :desc)
@@ -33,6 +28,9 @@ class PostsController < ApplicationController
     a_new_post.title = params.fetch("query_title")
     a_new_post.body = params.fetch("query_body")
     a_new_post.save
+
+    # a_new_post.errors.full_messages => errors.full_messages
+    # => ["Input can't be blank"]
 
     redirect_to("/posts/#{a_new_post.id}")
   end
